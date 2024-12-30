@@ -1,20 +1,12 @@
 <?php
 
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,3 +17,6 @@ Route::post('/backend/login', [LoginController::class, 'authenticateBackend'])->
 Route::post('/backend/logout', [LoginController::class, 'logoutBackend'])->name('backend.logout');
 // Route::resource('backend/user', UserController::class)->middleware('auth');
 Route::resource('/backend/user', UserController::class, ['as' => 'backend'])->middleware('auth');
+
+// Route untuk Kategori 
+Route::resource('backend/kategori', KategoriController::class, ['as' => 'backend'])->middleware('auth'); 
